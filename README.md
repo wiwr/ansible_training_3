@@ -11,5 +11,6 @@ vagrant destroy
 
 # Command list
 ansible-playbook playbook-01.yml
+ansible-playbook playbook-02.yml
 
 
