@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: no
+  vars:
+    - username: vagrant
+    - home: /home/vagrant
+  tasks:
+    - name: print variables
+      ansible.builtin.debug:
+        msg: "Username: {{ username }}, Home dir: {{ home }}"
+
