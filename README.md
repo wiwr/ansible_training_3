@@ -1,13 +1,15 @@
-#Done follow tutorial
+# Done follow tutorial
 https://www.digitalocean.com/community/tutorial-series/how-to-write-ansible-playbooks
 
-#Modification
+# Modification
 Done with Vagrant
 
-#Vagrant commends
+# Vagrant commends
 vagrant init
 vagrant up
 vagrant destroy
 
+# Command list
+ansible-playbook playbook-01.yml
 
 
