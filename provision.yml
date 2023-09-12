@@ -1,0 +1,36 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: firewall deny incoming traffic
+      ansible.builtin.ufw:
+        direction: incoming
+        proto: any
+        policy: deny
+      notify:
+        - reload firewall
+
+    - name: firewall deny outgoing traffic
+      ansible.builtin.ufw:
+        direction: outgoing
+        proto: any
+        policy: deny
+      notify: 
+        - reload firewall
+
+    - name: firewall allow ssh
+      ansible.builtin.ufw:
+        rule: allow
+        name: OpenSSH
+      notify:
+        - reload firewall
+
+    - name: Enable firewall service
+      ansible.builtin.ufw:
+        state: enabled
+
+  handlers:
+    - name: reload firewall
+      ansible.builtin.ufw:
+        state: reloaded
