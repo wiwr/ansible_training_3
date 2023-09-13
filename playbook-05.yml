@@ -1,0 +1,22 @@
+---
+- hosts: all
+
+  vars: 
+    - user: vagrant
+
+  tasks:
+    - name: Check if file already exists
+      command: ls /home/{{ user }}/myfile
+      register: file_exists
+      ignore_errors: yes
+
+    - name: Create file for user
+      ansible.builtin.file:
+        path: /home/{{ user }}/myfile
+        state: touch
+      when: file_exists is failed
+
+    - name: Show message if file exists
+      ansible.builtin.debug:
+        msg: The user file already exists.
+      when: file_exists is succeeded
