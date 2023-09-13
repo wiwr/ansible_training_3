@@ -1,0 +1,13 @@
+---
+- hosts: all
+
+  vars:
+    - create_user_file: yes
+    - user: vagrant
+  
+  tasks:
+    - name: Create file for user
+      ansible.builtin.file:
+        path: /home/{{ user }}/myfile
+        state: touch
+      when: create_user_file
