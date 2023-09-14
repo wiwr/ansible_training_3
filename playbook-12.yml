@@ -7,6 +7,11 @@
     page_description: This is my second landing page description.
     doc_root: /var/www/mypage
 
+  pre_tasks:
+    - name: Update cache for apt
+      ansible.builtin.apt:
+        update_cache: yes
+
   tasks:
     - name: Install Nginx
       ansible.builtin.apt:
