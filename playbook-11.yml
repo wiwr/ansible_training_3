@@ -6,6 +6,11 @@
     page_title: My Landign Page
     page_description: This is my landing page description.
 
+  pre_tasks:
+    - name: Updated cache for apt
+      ansible.builtin.apt:
+        update_cache: yes
+
   tasks:
     - name: Install Nginx
       ansible.builtin.apt:
